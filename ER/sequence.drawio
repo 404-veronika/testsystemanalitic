@@ -1,0 +1,288 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36" version="28.1.0">
+  <diagram name="Страница — 1" id="Bk2SN39NL-XOOlmCxDbU">
+    <mxGraphModel dx="1296" dy="637" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="AueZX1-6-Mkk2wAswE7E-1" value="пользователь&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="30" y="10" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="AueZX1-6-Mkk2wAswE7E-9" value="пользователь&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="30" y="1011" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="AueZX1-6-Mkk2wAswE7E-10" value="мобильное приложение&lt;div&gt;/web&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="240" y="10" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="AueZX1-6-Mkk2wAswE7E-12" value="мобильное приложение&lt;div&gt;/web&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="240" y="1011" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="AueZX1-6-Mkk2wAswE7E-13" value="backend API" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="610" y="10" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="AueZX1-6-Mkk2wAswE7E-14" value="backend API" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="620" y="1011" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="AueZX1-6-Mkk2wAswE7E-15" value="DB: users" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="989" y="10" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="AueZX1-6-Mkk2wAswE7E-16" value="DB: users" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="1011" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="AueZX1-6-Mkk2wAswE7E-17" value="" style="endArrow=none;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="AueZX1-6-Mkk2wAswE7E-9" target="AueZX1-6-Mkk2wAswE7E-1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="670" y="310" as="sourcePoint" />
+            <mxPoint x="720" y="260" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="AueZX1-6-Mkk2wAswE7E-18" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="AueZX1-6-Mkk2wAswE7E-12" target="AueZX1-6-Mkk2wAswE7E-10">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="220" y="480" as="sourcePoint" />
+            <mxPoint x="270" y="430" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="AueZX1-6-Mkk2wAswE7E-21" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="46" y="120" as="sourcePoint" />
+            <mxPoint x="330" y="120" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="AueZX1-6-Mkk2wAswE7E-22" value="инвестирует в акции 100 000 руб." style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="76" y="90" width="210" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="AueZX1-6-Mkk2wAswE7E-23" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="AueZX1-6-Mkk2wAswE7E-14" target="AueZX1-6-Mkk2wAswE7E-13">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="200" y="370" as="sourcePoint" />
+            <mxPoint x="250" y="320" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="AueZX1-6-Mkk2wAswE7E-24" value="&lt;span style=&quot;font-weight: 700;&quot;&gt;post /investment_transactions/{&lt;/span&gt;&lt;span style=&quot;font-weight: 700;&quot;&gt;investment_transaction_id: 5123,&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;text-align: left; text-wrap-mode: wrap;&quot;&gt;amount: 100000, type: &quot;invest&quot;, user_id:111}&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="265" y="150" width="480" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="AueZX1-6-Mkk2wAswE7E-25" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="330" y="170" as="sourcePoint" />
+            <mxPoint x="700" y="170" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="AueZX1-6-Mkk2wAswE7E-29" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="AueZX1-6-Mkk2wAswE7E-16" target="AueZX1-6-Mkk2wAswE7E-15">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1170" y="520" as="sourcePoint" />
+            <mxPoint x="1220" y="470" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="AueZX1-6-Mkk2wAswE7E-30" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="700" y="210" as="sourcePoint" />
+            <mxPoint x="1080" y="210" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="AueZX1-6-Mkk2wAswE7E-31" value="SELECT * FROM users WHERE user_id = 111;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="740" y="178" width="280" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="AueZX1-6-Mkk2wAswE7E-33" value="" style="endArrow=classic;html=1;rounded=0;dashed=1;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1078" y="250" as="sourcePoint" />
+            <mxPoint x="698" y="250" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="AueZX1-6-Mkk2wAswE7E-34" value="{user_id:111,status : &quot;verified&quot;}" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="785" y="220" width="190" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="AueZX1-6-Mkk2wAswE7E-35" value="DB:&amp;nbsp;&lt;span style=&quot;font-weight: 700; text-wrap-mode: nowrap;&quot;&gt;user_loyalty_level&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1340" y="10" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="AueZX1-6-Mkk2wAswE7E-36" value="DB:&amp;nbsp;&lt;span style=&quot;font-weight: 700; text-wrap-mode: nowrap;&quot;&gt;user_loyalty_level&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1350" y="1011" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="AueZX1-6-Mkk2wAswE7E-37" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="AueZX1-6-Mkk2wAswE7E-36" target="AueZX1-6-Mkk2wAswE7E-35">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1440" y="500" as="sourcePoint" />
+            <mxPoint x="1080" y="210" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="AueZX1-6-Mkk2wAswE7E-38" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="700" y="290" as="sourcePoint" />
+            <mxPoint x="1430" y="290" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="AueZX1-6-Mkk2wAswE7E-39" value="SELECT * FROM&amp;nbsp;&lt;span style=&quot;text-wrap-mode: wrap;&quot;&gt;&amp;nbsp;&lt;/span&gt;user_loyalty_level&amp;nbsp;WHERE user_id = 111;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="880" y="260" width="340" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="AueZX1-6-Mkk2wAswE7E-40" value="" style="endArrow=classic;html=1;rounded=0;dashed=1;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1430" y="330" as="sourcePoint" />
+            <mxPoint x="700" y="330" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="AueZX1-6-Mkk2wAswE7E-41" value="{user_id:111,&lt;span style=&quot;text-align: left; text-wrap-mode: wrap;&quot;&gt;name&amp;nbsp;&lt;/span&gt;: &quot;new&quot;&lt;span style=&quot;text-align: left; text-wrap-mode: wrap;&quot;&gt;&quot;&lt;/span&gt;}" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="915" y="302" width="170" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="AueZX1-6-Mkk2wAswE7E-42" value="" style="curved=1;endArrow=none;html=1;rounded=0;startArrow=classic;startFill=1;endFill=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="2110" y="670" as="sourcePoint" />
+            <mxPoint x="2110" y="610" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="2360" y="670" />
+              <mxPoint x="2360" y="610" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="AueZX1-6-Mkk2wAswE7E-43" value="Расчет: 100000*1%=1000 бонусов" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="700" y="462" width="210" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="AueZX1-6-Mkk2wAswE7E-45" value="DB:&amp;nbsp;&lt;span style=&quot;font-weight: 700; text-wrap-mode: nowrap;&quot;&gt;investment_transactions&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1690" y="10" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="AueZX1-6-Mkk2wAswE7E-46" value="DB:&amp;nbsp;&lt;span style=&quot;font-weight: 700; text-wrap-mode: nowrap;&quot;&gt;investment_transactions&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1690" y="1011" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="AueZX1-6-Mkk2wAswE7E-47" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="700" y="370" as="sourcePoint" />
+            <mxPoint x="1770" y="370" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="AueZX1-6-Mkk2wAswE7E-48" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="AueZX1-6-Mkk2wAswE7E-46" target="AueZX1-6-Mkk2wAswE7E-45">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1200" y="500" as="sourcePoint" />
+            <mxPoint x="1250" y="450" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="AueZX1-6-Mkk2wAswE7E-49" value="INSERT INTO&amp;nbsp;&lt;span style=&quot;font-weight: 700;&quot;&gt;i&lt;/span&gt;nvestment_transactions VALUES (...)" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1010" y="340" width="300" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="AueZX1-6-Mkk2wAswE7E-50" value="" style="endArrow=classic;html=1;rounded=0;dashed=1;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1780" y="420" as="sourcePoint" />
+            <mxPoint x="700" y="420" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="AueZX1-6-Mkk2wAswE7E-51" value="&lt;span style=&quot;font-weight: 700;&quot;&gt;{i&lt;/span&gt;nvestment_transaction_id: 99999, type: invest, amoun: 100000}" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="989" y="390" width="370" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="AueZX1-6-Mkk2wAswE7E-55" value="DB:&amp;nbsp;&lt;span style=&quot;font-weight: 700; text-wrap-mode: nowrap;&quot;&gt;user_loyalty_bonuses&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2020" y="10" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="AueZX1-6-Mkk2wAswE7E-56" value="DB:&amp;nbsp;&lt;span style=&quot;font-weight: 700; text-wrap-mode: nowrap;&quot;&gt;user_loyalty_bonuses&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2020" y="1011" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="AueZX1-6-Mkk2wAswE7E-57" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="AueZX1-6-Mkk2wAswE7E-56" target="AueZX1-6-Mkk2wAswE7E-55">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1110" y="240" as="sourcePoint" />
+            <mxPoint x="1160" y="190" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="AueZX1-6-Mkk2wAswE7E-58" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="700" y="540" as="sourcePoint" />
+            <mxPoint x="2110" y="540" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="AueZX1-6-Mkk2wAswE7E-59" value="UPDATE&amp;nbsp;user_loyalty_bonuses SET bonuses = bonuses&amp;nbsp;+1000 WHERE user_id = 111;&amp;nbsp;&amp;nbsp;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="965" y="508" width="490" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="AueZX1-6-Mkk2wAswE7E-60" value="" style="curved=1;endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="700" y="450" as="sourcePoint" />
+            <mxPoint x="700" y="510" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="950" y="450" />
+              <mxPoint x="950" y="510" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="AueZX1-6-Mkk2wAswE7E-63" value="SELECT SUM (bonuses) FROM&amp;nbsp;user_loyalty_bonuses&lt;div&gt;&amp;nbsp;WHERE user_id =111;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="2025" y="617" width="310" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="AueZX1-6-Mkk2wAswE7E-66" value="" style="endArrow=classic;html=1;rounded=0;dashed=1;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="2110" y="680" as="sourcePoint" />
+            <mxPoint x="710" y="680" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="AueZX1-6-Mkk2wAswE7E-67" value="{total bonuses: 1500}" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="650" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="AueZX1-6-Mkk2wAswE7E-68" value="DB:&lt;span style=&quot;font-weight: 700; text-wrap-mode: nowrap;&quot;&gt;loyalty_levels&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2400" y="10" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="AueZX1-6-Mkk2wAswE7E-70" value="DB:&amp;nbsp;&lt;span style=&quot;font-weight: 700; text-wrap-mode: nowrap;&quot;&gt;loyalty_levels&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2400" y="1011" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="AueZX1-6-Mkk2wAswE7E-71" value="" style="endArrow=none;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="AueZX1-6-Mkk2wAswE7E-70" target="AueZX1-6-Mkk2wAswE7E-68">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="2090" y="670" as="sourcePoint" />
+            <mxPoint x="2140" y="620" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="AueZX1-6-Mkk2wAswE7E-72" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="710" y="740" as="sourcePoint" />
+            <mxPoint x="2490" y="740" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="AueZX1-6-Mkk2wAswE7E-73" value="SELECT loyalty_level_id,name FROM&amp;nbsp;loyalty_levels WHERE&amp;nbsp;&lt;span style=&quot;text-align: left; text-wrap-mode: wrap;&quot;&gt;min_bonuses&amp;lt; =&amp;nbsp;&lt;/span&gt;1500 ORDER BY&amp;nbsp;&lt;span style=&quot;text-align: left; text-wrap-mode: wrap;&quot;&gt;min_bonuses DESC LIMIT 1;&lt;/span&gt;&amp;nbsp;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1010" y="708" width="700" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="AueZX1-6-Mkk2wAswE7E-74" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="2490" y="790" as="sourcePoint" />
+            <mxPoint x="710" y="800" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="AueZX1-6-Mkk2wAswE7E-75" value="{loyalty_levels_id:2, name: &quot;active&quot;}" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1175" y="768" width="210" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="AueZX1-6-Mkk2wAswE7E-80" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="710" y="850" as="sourcePoint" />
+            <mxPoint x="1440" y="850" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="AueZX1-6-Mkk2wAswE7E-81" value="UPDATE&amp;nbsp;&lt;span style=&quot;text-wrap-mode: wrap;&quot;&gt;&amp;nbsp;&lt;/span&gt;user_loyalty_level&amp;nbsp;SET loyalty_levels_id:2, name: &quot;active&quot; WHERE user_id = 111;&amp;nbsp;&amp;nbsp;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="750" y="819" width="520" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="AueZX1-6-Mkk2wAswE7E-82" value="Сервис уведомлений" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2760" y="1011" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="AueZX1-6-Mkk2wAswE7E-83" value="Сервис уведомлений" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2760" y="10" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="AueZX1-6-Mkk2wAswE7E-84" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="710" y="590" as="sourcePoint" />
+            <mxPoint x="2850" y="590" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="AueZX1-6-Mkk2wAswE7E-85" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="AueZX1-6-Mkk2wAswE7E-82" target="AueZX1-6-Mkk2wAswE7E-83">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1860" y="490" as="sourcePoint" />
+            <mxPoint x="1910" y="440" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="AueZX1-6-Mkk2wAswE7E-86" value="ОТПРАВИТЬ УВЕДОМЛЕНИЕ О НАЧИСЛЕНИИ БОНУСОВ ЗА ОПЕРАЦИЮ" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1275" y="561" width="450" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="AueZX1-6-Mkk2wAswE7E-87" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="710" y="910" as="sourcePoint" />
+            <mxPoint x="2850" y="910" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="AueZX1-6-Mkk2wAswE7E-88" value="ОТПРАВИТЬ УВЕДОМЛЕНИЕ О НОВОМ БОНУСНОМ УРОВНЕ&amp;nbsp;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1160" y="880" width="380" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="AueZX1-6-Mkk2wAswE7E-89" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="710" y="960" as="sourcePoint" />
+            <mxPoint x="330" y="960" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="AueZX1-6-Mkk2wAswE7E-90" value="200 OK {user_loyalty_bonuses added: 1000,&amp;nbsp;&lt;div&gt;new_user_loyalty_bonuses: 1500,&lt;div&gt;&amp;nbsp;new_user_loyalty_level: &quot;active&quot;}&lt;/div&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="381" y="902" width="260" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
