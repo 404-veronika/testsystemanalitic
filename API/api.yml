@@ -1,0 +1,712 @@
+openapi: 3.0.3
+info:
+  title: Investment Capital Bonus System API
+  description: API для управления бонусной программой инвестиционного портала
+  version: 1.0.0
+ 
+
+servers:
+  - url: https://api.investment-portal.ru/bonus/v1
+    description: server
+
+tags:
+  - name: Users
+    description: Управление пользователями
+  - name: Loyalty
+    description: Уровни лояльности
+  - name: Bonuses
+    description: Операции с бонусами
+  - name: Rewards
+    description: Награды и их получение
+  - name: Referrals
+    description: Реферальная программа
+  - name: Investments
+    description: Интеграция с инвестициями
+
+components:
+
+
+  schemas:
+    # User Schemas
+    User:
+      type: object
+      properties:
+        user_id:
+          type: integer
+          format: int64
+          example: 101
+        surname:
+          type: string
+          example: "Иванов"
+        name:
+          type: string
+          example: "Иван"
+        patronymic:
+          type: string
+          example: "Иванович"
+        birth_date:
+          type: string
+          format: date
+          example: "1985-03-15"
+        email:
+          type: string
+          format: email
+          example: "ivanov@mail.ru"
+        phone:
+          type: string
+          example: "+79161234567"
+        registration_date:
+          type: string
+          format: date-time
+          example: "2024-01-15T10:30:00Z"
+        investment_balance:
+          type: number
+          format: float
+          example: 250000.75
+        loyalty_level_id:
+          type: integer
+          example: 2
+
+    UserCreateRequest:
+      type: object
+      required:
+        - surname
+        - email
+        - name
+      properties:
+        surname:
+          type: string
+          example: "Иванов"
+        name:
+          type: string
+          example: "Петр"
+        patronymic:
+          type: string
+          example: "Петрович"
+        birth_date:
+          type: string
+          format: date
+          example: "1990-07-20"
+        email:
+          type: string
+          format: email
+          example: "petr@mail.ru"
+        phone:
+          type: string
+          example: "+79167654321"
+
+    # Loyalty Level Schemas
+    LoyaltyLevel:
+      type: object
+      properties:
+        level_id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          enum: ["Новичок", "Активный", "Премиум"]
+          example: "Активный"
+        benefits:
+          type: string
+          example: "Кэшбек 1.5% на все инвестиционные операции"
+        min_bonuses:
+          type: integer
+          example: 1000
+        min_investments:
+          type: number
+          format: float
+          example: 50000.00
+
+    # Bonus Schemas
+    UserBonus:
+      type: object
+      properties:
+        user_loyalty_bonuses_id:
+          type: integer
+          format: int64
+          example: 501
+        user_id:
+          type: integer
+          format: int64
+          example: 101
+        bonuses:
+          type: integer
+          example: 1500
+        source:
+          type: string
+          enum: ["referral", "investment", "deposit", "trade", "dividend", "achievement"]
+          example: "investment"
+        created_date:
+          type: string
+          format: date-time
+          example: "2024-01-20T14:25:00Z"
+
+    BonusAccrualRequest:
+      type: object
+      required:
+        - user_id
+        - amount
+        - source
+      properties:
+        user_id:
+          type: integer
+          format: int64
+          example: 101
+        amount:
+          type: integer
+          minimum: 1
+          example: 100
+        source:
+          type: string
+          enum: ["referral", "investment", "deposit", "trade", "dividend", "achievement"]
+          example: "trade"
+        description:
+          type: string
+          example: "Начисление за торговую операцию AAPL"
+        reference_id:
+          type: string
+          example: "trade_78901"
+
+    # Reward Schemas
+    Reward:
+      type: object
+      properties:
+        reward_id:
+          type: integer
+          format: int64
+          example: 201
+        name:
+          type: string
+          example: "Денежный кэшбек"
+        bonuses_cost:
+          type: integer
+          example: 500
+        type:
+          type: string
+          enum: ["cashback", "discount", "education_access", "premium_subscription", "gift"]
+          example: "cashback"
+        is_active:
+          type: boolean
+          example: true
+        description:
+          type: string
+          example: "Возврат 1.5% от суммы операции"
+
+    RewardRedemption:
+      type: object
+      properties:
+        reward_referential_id:
+          type: integer
+          format: int64
+          example: 301
+        reward_id:
+          type: integer
+          format: int64
+          example: 201
+        user_id:
+          type: integer
+          format: int64
+          example: 101
+        bonuses_spent:
+          type: integer
+          example: 500
+        redemption_date:
+          type: string
+          format: date-time
+          example: "2024-01-25T16:40:00Z"
+        status:
+          type: string
+          enum: ["pending", "fulfilled", "cancelled"]
+          example: "fulfilled"
+
+    RewardRedemptionRequest:
+      type: object
+      required:
+        - user_id
+        - reward_id
+      properties:
+        user_id:
+          type: integer
+          format: int64
+          example: 101
+        reward_id:
+          type: integer
+          format: int64
+          example: 201
+
+    # Referral Schemas
+    Referral:
+      type: object
+      properties:
+        referral_id:
+          type: integer
+          format: int64
+          example: 401
+        referrer_id:
+          type: integer
+          format: int64
+          example: 101
+        referred_id:
+          type: integer
+          format: int64
+          example: 102
+        reward_given:
+          type: boolean
+          example: true
+        status:
+          type: string
+          enum: ["pending", "completed", "cancelled"]
+          example: "completed"
+        created_date:
+          type: string
+          format: date-time
+          example: "2024-01-18T11:20:00Z"
+
+    ReferralCreateRequest:
+      type: object
+      required:
+        - referrer_id
+        - referred_email
+      properties:
+        referrer_id:
+          type: integer
+          format: int64
+          example: 101
+        referred_email:
+          type: string
+          format: email
+          example: "ivanov@mail.ru"
+
+    # Investment Schemas
+    InvestmentTransaction:
+      type: object
+      properties:
+        investment_transaction_id:
+          type: integer
+          format: int64
+          example: 601
+        user_id:
+          type: integer
+          format: int64
+          example: 101
+        amount:
+          type: number
+          format: float
+          example: 10000.00
+        type:
+          type: string
+          enum: ["deposit", "withdrawal", "dividend", "trade", "fee"]
+          example: "deposit"
+        date:
+          type: string
+          format: date-time
+          example: "2024-01-22T09:15:00Z"
+        user_loyalty_bonuses_id:
+          type: integer
+          format: int64
+          nullable: true
+          example: 501
+        description:
+          type: string
+          example: "Пополнение счета через Сбербанк"
+
+    # Response Schemas
+    BonusBalanceResponse:
+      type: object
+      properties:
+        user_id:
+          type: integer
+          format: int64
+          example: 101
+        total_bonuses:
+          type: integer
+          example: 1500
+        available_bonuses:
+          type: integer
+          example: 1200
+        frozen_bonuses:
+          type: integer
+          example: 300
+
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              example: "INSUFFICIENT_BONUSES"
+            message:
+              type: string
+              example: "Недостаточно бонусных баллов для операции"
+            details:
+              type: object
+
+  parameters:
+    userIdPath:
+      name: userId
+      in: path
+      required: true
+      schema:
+        type: integer
+        format: int64
+      description: ID пользователя
+
+    rewardIdPath:
+      name: rewardId
+      in: path
+      required: true
+      schema:
+        type: integer
+        format: int64
+      description: ID награды
+
+    limitQuery:
+      name: limit
+      in: query
+      schema:
+        type: integer
+        default: 50
+        maximum: 100
+      description: Лимит записей в ответе
+
+    offsetQuery:
+      name: offset
+      in: query
+      schema:
+        type: integer
+        default: 0
+      description: Смещение для пагинации
+
+
+paths:
+  # User endpoints
+  /users:
+    post:
+      tags: [Users]
+      summary: Создать нового пользователя
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserCreateRequest'
+      responses:
+        '201':
+          description: Пользователь успешно создан
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '400':
+          description: Неверные данные пользователя
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /users/{userId}:
+    get:
+      tags: [Users]
+      summary: Получить информацию о пользователе
+      parameters:
+        - $ref: '#/components/parameters/userIdPath'
+      responses:
+        '200':
+          description: Информация о пользователе
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '404':
+          description: Пользователь не найден
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  # Loyalty endpoints
+  /loyalty/levels:
+    get:
+      tags: [Loyalty]
+      summary: Получить все уровни лояльности
+      responses:
+        '200':
+          description: Список уровней лояльности
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LoyaltyLevel'
+
+  /users/{userId}/loyalty-level:
+    get:
+      tags: [Loyalty]
+      summary: Получить текущий уровень лояльности пользователя
+      parameters:
+        - $ref: '#/components/parameters/userIdPath'
+      responses:
+        '200':
+          description: Уровень лояльности пользователя
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoyaltyLevel'
+        '404':
+          description: Пользователь не найден
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  # Bonus endpoints
+  /users/{userId}/bonuses/balance:
+    get:
+      tags: [Bonuses]
+      summary: Получить баланс бонусов пользователя
+      parameters:
+        - $ref: '#/components/parameters/userIdPath'
+      responses:
+        '200':
+          description: Баланс бонусов
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BonusBalanceResponse'
+        '404':
+          description: Пользователь не найден
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /bonuses/accrual:
+    post:
+      tags: [Bonuses]
+      summary: Начислить бонусные баллы
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BonusAccrualRequest'
+      responses:
+        '200':
+          description: Бонусы успешно начислены
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserBonus'
+        '400':
+          description: Неверные параметры запроса
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /users/{userId}/bonuses/history:
+    get:
+      tags: [Bonuses]
+      summary: Получить историю начислений бонусов
+      parameters:
+        - $ref: '#/components/parameters/userIdPath'
+        - $ref: '#/components/parameters/limitQuery'
+        - $ref: '#/components/parameters/offsetQuery'
+      responses:
+        '200':
+          description: История начислений бонусов
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserBonus'
+        '404':
+          description: Пользователь не найден
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  # Reward endpoints
+  /rewards:
+    get:
+      tags: [Rewards]
+      summary: Получить список доступных наград
+      responses:
+        '200':
+          description: Список доступных наград
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Reward'
+
+  /rewards/{rewardId}:
+    get:
+      tags: [Rewards]
+      summary: Получить информацию о награде
+      parameters:
+        - $ref: '#/components/parameters/rewardIdPath'
+      responses:
+        '200':
+          description: Информация о награде
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Reward'
+        '404':
+          description: Награда не найдена
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /rewards/redeem:
+    post:
+      tags: [Rewards]
+      summary: Обменять бонусы на награду
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RewardRedemptionRequest'
+      responses:
+        '200':
+          description: Награда успешно получена
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RewardRedemption'
+        '402':
+          description: Недостаточно бонусов
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /users/{userId}/rewards/history:
+    get:
+      tags: [Rewards]
+      summary: Получить историю получения наград
+      parameters:
+        - $ref: '#/components/parameters/userIdPath'
+        - $ref: '#/components/parameters/limitQuery'
+        - $ref: '#/components/parameters/offsetQuery'
+      responses:
+        '200':
+          description: История получения наград
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RewardRedemption'
+        '404':
+          description: Пользователь не найден
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  # Referral endpoints
+  /referrals:
+    post:
+      tags: [Referrals]
+      summary: Создать реферальное приглашение
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReferralCreateRequest'
+      responses:
+        '201':
+          description: Реферальное приглашение создано
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Referral'
+        '400':
+          description: Неверные параметры запроса
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /users/{userId}/referrals:
+    get:
+      tags: [Referrals]
+      summary: Получить реферальную историю пользователя
+      parameters:
+        - $ref: '#/components/parameters/userIdPath'
+        - $ref: '#/components/parameters/limitQuery'
+        - $ref: '#/components/parameters/offsetQuery'
+      responses:
+        '200':
+          description: Реферальная история
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Referral'
+        '404':
+          description: Пользователь не найден
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  # Investment endpoints
+  /investments/transactions:
+    post:
+      tags: [Investments]
+      summary: Зарегистрировать инвестиционную операцию
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InvestmentTransaction'
+      responses:
+        '201':
+          description: Инвестиционная операция зарегистрирована
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvestmentTransaction'
+        '400':
+          description: Неверные параметры операции
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /users/{userId}/investments/transactions:
+    get:
+      tags: [Investments]
+      summary: Получить историю инвестиционных операций
+      parameters:
+        - $ref: '#/components/parameters/userIdPath'
+        - $ref: '#/components/parameters/limitQuery'
+        - $ref: '#/components/parameters/offsetQuery'
+      responses:
+        '200':
+          description: История инвестиционных операций
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InvestmentTransaction'
+        '404':
+          description: Пользователь не найден
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
