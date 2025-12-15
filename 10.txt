@@ -1,0 +1,159 @@
+-- Создание таблицы пользователей
+CREATE TABLE User (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    password_hash VARCHAR(255) NOT NULL,
+    first_name VARCHAR(100) NOT NULL,
+    last_name VARCHAR(100) NOT NULL,
+    phone_number VARCHAR(20),
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Создание таблицы типов билетов
+CREATE TABLE TicketType (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    price DECIMAL(10, 2) NOT NULL,
+    description TEXT,
+    is_available BOOLEAN DEFAULT TRUE
+);
+
+-- Создание таблицы заказов
+CREATE TABLE `Order` (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT NOT NULL,
+    order_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+    total_amount DECIMAL(10, 2) NOT NULL,
+    payment_status ENUM('pending', 'completed', 'failed', 'refunded') DEFAULT 'pending',
+    FOREIGN KEY (user_id) REFERENCES User(id)
+);
+
+-- Создание таблицы билетов
+CREATE TABLE Ticket (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    ticket_type_id INT NOT NULL,
+    user_id INT NULL,
+    purchase_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+    visit_date DATE NOT NULL,
+    qr_code VARCHAR(500) UNIQUE,
+    status ENUM('active', 'used', 'cancelled') DEFAULT 'active',
+    FOREIGN KEY (ticket_type_id) REFERENCES TicketType(id),
+    FOREIGN KEY (user_id) REFERENCES User(id) ON DELETE SET NULL
+);
+
+-- Создание таблицы элементов заказа
+CREATE TABLE Order_Item (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    order_id INT NOT NULL,
+    ticket_id INT NOT NULL,
+    unit_price DECIMAL(10, 2) NOT NULL,
+    FOREIGN KEY (order_id) REFERENCES `Order`(id),
+    FOREIGN KEY (ticket_id) REFERENCES Ticket(id),
+    UNIQUE KEY unique_ticket_order (ticket_id) -- Один билет может быть только в одном заказе
+);
+
+-- Создание индексов для оптимизации
+CREATE INDEX idx_user_created ON User(created_at);
+CREATE INDEX idx_ticket_user ON Ticket(user_id);
+CREATE INDEX idx_ticket_visit ON Ticket(visit_date);
+CREATE INDEX idx_order_user ON `Order`(user_id);
+CREATE INDEX idx_order_status ON `Order`(payment_status);
+
+-- Добавляем типы билетов
+INSERT INTO TicketType (name, price, description) VALUES
+('Взрослый', 1000.00, 'Билет для взрослых посетителей от 18 лет'),
+('Детский', 500.00, 'Билет для детей от 3 до 17 лет'),
+('Семейный', 2500.00, 'Билет для 2 взрослых и 2 детей'),
+('Льготный', 300.00, 'Билет для пенсионеров и инвалидов');
+
+-- Добавляем пользователей
+INSERT INTO User (email, password_hash, first_name, last_name, phone_number, created_at) VALUES
+('ivanov@mail.com', 'hash123', 'Иван', 'Иванов', '+79161234567', '2024-01-15 10:00:00'),
+('petrova@mail.com', 'hash456', 'Мария', 'Петрова', '+79167654321', DATE_SUB(NOW(), INTERVAL 3 DAY)),
+('sidorov@mail.com', 'hash789', 'Алексей', 'Сидоров', '+79169998877', DATE_SUB(NOW(), INTERVAL 1 DAY)),
+('new_user@mail.com', 'hash999', 'Ольга', 'Новикова', '+79161112233', NOW());
+
+
+1. Покупка (добавление в таблицу) нового билета
+START TRANSACTION;
+
+-- 1. Создаем билет
+INSERT INTO Ticket (ticket_type_id, user_id, visit_date, qr_code) 
+VALUES (
+    (SELECT id FROM TicketType WHERE name = 'Взрослый'),
+    (SELECT id FROM User WHERE email = 'ivanov@mail.com'),
+    DATE_ADD(CURDATE(), INTERVAL 2 DAY),
+    UUID()
+);
+
+-- 2. Создаем заказ
+INSERT INTO `Order` (user_id, total_amount, payment_status) 
+VALUES (
+    (SELECT id FROM User WHERE email = 'ivanov@mail.com'),
+    (SELECT price FROM TicketType WHERE name = 'Взрослый'),
+    'completed'
+);
+
+-- 3. Связываем билет с заказом
+INSERT INTO Order_Item (order_id, ticket_id, unit_price)
+VALUES (
+    LAST_INSERT_ID(),
+    LAST_INSERT_ID()-1, -- ID созданного билета (зависит от порядка вставки)
+    (SELECT price FROM TicketType WHERE name = 'Взрослый')
+);
+
+COMMIT;
+
+2. Найти всех пользователей, которые зарегистрировались за последние 7 дней
+
+SELECT 
+    id,
+    email,
+    first_name,
+    last_name,
+    phone_number,
+    created_at
+FROM User 
+WHERE created_at >= DATE_SUB(CURDATE(), INTERVAL 7 DAY)
+ORDER BY created_at DESC;
+3. Найти сколько всего билетов купил пользователь
+sql
+-- Для конкретного пользователя
+SELECT 
+    u.id,
+    u.first_name,
+    u.last_name,
+    u.email,
+    COUNT(t.id) as total_tickets,
+    SUM(tt.price) as total_spent
+FROM User u
+LEFT JOIN Ticket t ON u.id = t.user_id
+LEFT JOIN TicketType tt ON t.ticket_type_id = tt.id
+WHERE u.email = 'ivanov@mail.com'
+GROUP BY u.id, u.first_name, u.last_name, u.email;
+
+-- Для всех пользователей с сортировкой по количеству билетов
+SELECT 
+    u.id,
+    u.first_name,
+    u.last_name,
+    u.email,
+    COUNT(t.id) as total_tickets
+FROM User u
+LEFT JOIN Ticket t ON u.id = t.user_id
+GROUP BY u.id, u.first_name, u.last_name, u.email
+ORDER BY total_tickets DESC;
+4. Обновить цену на билет
+
+-- Повышение цены на взрослый билет на 15%
+UPDATE TicketType 
+SET price = price * 1.15 
+WHERE name = 'Взрослый';
+
+-- Установка конкретной цены на детский билет
+UPDATE TicketType 
+SET price = 550.00 
+WHERE name = 'Детский';
+
+-- Проверка обновленных цен
+SELECT name, price FROM TicketType ORDER BY price DESC;
